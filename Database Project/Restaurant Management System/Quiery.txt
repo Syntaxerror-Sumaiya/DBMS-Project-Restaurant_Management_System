@@ -1,0 +1,41 @@
+Bill{
+name of restaurant
+list of items
+ammount
+price
+total
+}
+
+
+SELECT Name, Order_No, Name_of_item, Quantity AS Unit, Price
+FROM order_list O, menu M, restaurant
+WHERE Name='Cibo Matto' AND Order_No=4; 
+
+
+SELECT R.Name, O.Order_No, M.Name_of_item, M.Quantity AS Unit, M.Price
+FROM order_list O, menu M, restaurant R
+WHERE R.Name='Cibo Matto' AND O.Order_No=4; 
+
+SELECT R.Name, O.Order_No, O.Name_of_item, O.Quantity AS Unit, M.Price*Quantity Sub_price
+FROM order_list O, menu M, restaurant R
+Group BY O.Name_of_item 
+HAVING Order_No=4  ;
+
+2.
+SELECT CONCAT(Firstname,Lastname) AS Name, Date
+FROM customer
+WHERE Address LIKE '%Farmgate'
+Order BY Name ASC;
+
+3.
+SELECT CONCAT(Firstname,Lastname) AS Name, Designation
+FROM crew
+WHERE Shift = 'day';
+
+4. subquery
+SELECT List AS Name_of_item
+FROM menu
+WHERE Price IN (SELECT Price
+               FROM menu
+               WHERE Price >100.00
+);

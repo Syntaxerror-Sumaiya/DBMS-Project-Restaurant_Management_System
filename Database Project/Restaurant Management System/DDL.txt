@@ -1,0 +1,70 @@
+CREATE TABLE headquarter
+(
+Name varchar(50),
+CEO varchar(50),
+Contact_Info varchar(100),
+Address varchar(50)
+)
+
+
+CREATE TABLE Restaurant
+(
+Name varchar(50),
+Contact_No varchar(15),
+Address varchar(50),
+Branch varchar(30),
+Outlet varchar (10),
+Opening_hours varchar(20),
+
+primary key (Address)
+)
+
+
+CREATE TABLE Customer
+(
+Index_No varchar(50),
+Firstname varchar(15),
+Lastname varchar(15),
+Address varchar(50),
+Contact_No varchar(15),
+
+primary key (Contact_No, Index_No)
+)
+
+
+
+CREATE TABLE Crew(
+Designation varchar(20),
+Firstname varchar(15),
+Lastname varchar(15),
+Address varchar(50),
+Shift varchar(10),
+Contact_No varchar(15),
+ID_No varchar(10),
+
+primary key (ID_No, Contact_No)
+)
+
+
+
+CREATE TABLE Menu(
+Index_No INT(5),
+Lists varchar(50),
+Price float(7,2),
+Quantity float(7,2),
+primary key (Index_No, Lists)
+)
+
+
+CREATE TABLE Order_List
+(
+Index_No INT(15),
+Order_No INT(15),
+No_of_item INT(5),	
+Lists varchar(50),
+Quantity float(7,2),
+
+primary key (Order_No),
+foreign key(Order_No) references Menu(Index_No)
+)
+
